@@ -1,43 +1,22 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String romano = "";
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el numero en mayusculas a convertir");
-        romano = scanner.nextLine();
-        int numeroNormal = convertir(romano);
-        System.out.println("El número arábigo equivalente de " + romano + " es: " + numeroNormal);
-    }
-
-    public static int convertir(String numeroRomanos) {
-        Map<Character, Integer> romanos = new HashMap<>();
-        romanos.put('I', 1);
-        romanos.put('V', 5);
-        romanos.put('X', 10);
-        romanos.put('L', 50);
-        romanos.put('C', 100);
-        romanos.put('D', 500);
-        romanos.put('M', 1000);
-
-        int resultado = 0;
-        int previo = 0;
-
-        for (int i = numeroRomanos.length() - 1; i >= 0; i--) {
-            char separarado = numeroRomanos.charAt(i);
-            int siguiente = romanos.get(separarado);
-
-            if (siguiente < previo) {
-                resultado -= siguiente;
-            } else {
-                resultado += siguiente;
-            }
-
-            previo = siguiente;
-        }
-
-        return resultado;
+        //cree motor
+        Motor motorCarro = new Motor("china","china23");
+        //Cree las llantas
+        Llanta llanta1 = new Llanta("marcaRin", "1");
+        Llanta llanta2 = new Llanta("marcaRin", "1");
+        Llanta llanta3 = new Llanta("marcaRin", "1");
+        Llanta llanta4 = new Llanta("marcaRin", "1");
+        //Cree el carro
+        Carro carroMazda = new Carro(motorCarro);
+        //Le asigno las llantas
+        carroMazda.agregarLlantas(llanta1);
+        carroMazda.agregarLlantas(llanta2);
+        carroMazda.agregarLlantas(llanta3);
+        carroMazda.agregarLlantas(llanta4);
+        //Obtener las relaciones de la clase principal que es carro
+        Motor motos = carroMazda.getMotor();
+        Llanta llanta = carroMazda.obtenerLlanta(2);
     }
 }
